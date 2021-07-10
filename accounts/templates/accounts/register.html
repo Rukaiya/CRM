@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registration</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+
+        <style>
+            body{background-color: rgba(70,130,180);}
+            .container-fluid{
+                
+                padding: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                background-size: cover;
+                position: absolute;
+            }
+            .col{ background-color: rgb(205,92,92);}
+            .card-shadow{
+                background-color: rgb(135,206,250);
+                box-shadow: 0 0 10px rgb(47,79,79);
+                
+            }
+            hr{
+                border: .01em solid rgb(205, 92, 92);
+                border-radius: .5em;
+                
+                width: 90%;
+                
+            }
+            h2{color: black;}
+
+            i{
+                margin-left: .5em;
+                margin-right: 1em;
+                color: black;
+
+            }
+            label{
+                color: black;
+                font-size: 1.2em;
+                
+            }
+
+            .btn{
+                margin-top: 1em;
+                border: .1em solid rgba(255, 255, 255, 0.5);
+                background-color: rgb(205,92,92) ;
+                width: 10em;
+                color: black;
+                font-size: 1.5em;
+                font-weight: bold;
+                box-shadow: 0 0 10px rgb(47,79,79);
+            }
+            .btn:hover{   
+                border: .1em solid rgba(255, 255, 255, 0.5);
+                background-color: rgb(30,144,255);
+                color:black;
+                }
+            a{font-size: 1.2em;}
+        </style> 
+    </head>
+    
+    <body>
+        <div class="container-fluid">
+            <div class="row justify-content-center ">
+                <div class="col col-lg-4 col-md-8 col-sm-8 p-3">
+                    <div class="card-shadow">
+                        <div class="card-title text-center ">
+                            <h2 class="p-2">Sign Up</h2>
+                            <hr>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="" class="form-group">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    <label>Username</label> <br>
+                                    {{form.username}}
+                     
+                                </div>
+                                <div class="form-group">
+                                    <i class="fa fa-envelope" aria-hidden="true" ></i>
+                                    <label>Email Address</label> <br>
+                                    {{form.email}}
+                     
+                                </div>
+                                <div class="form-group">
+                                    <i class="fas fa-unlock"></i>
+                                    <label for="">Password</label> <br>
+                                    {{form.password1}}
+                                </div>
+                                <div class="form-group">
+                                    <i class="fas fa-unlock"></i>
+                                    <label>Re-enter Password</label> <br>
+                                    {{form.password2}}                               
+                                </div>
+                                <div class="d-flex justify-content-center mt-4">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
+                                <br>
+                                {{form.errors}}
+                                <label>Already have an account?</label>
+                                <a href="{% url 'login'%}"> Login </a>
+    
+                            
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+
+        <script>
+            var form_field = document.getElementsByTagName('input')
+            form_field[1].placeholder='Username';
+            form_field[2].placeholder='Email';
+            form_field[3].placeholder='Enter Password';
+            form_field[4].placeholder='Re-enter Password';
+
+            for (var field in form_field) {
+                form_field[field].className += 'form-control'
+                
+            }
+        </script>
+    </body>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</html>
+
+
+

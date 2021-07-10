@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+        <style>
+            body{background-color: rgba(70,130,180);}
+            .container-fluid{
+                
+                padding: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                background-size: cover;
+                position: absolute;
+            }
+            .col{ background-color: rgb(205,92,92);}
+            .card-shadow{
+                background-color: rgb(135,206,250);
+                box-shadow: 0 0 10px rgb(47,79,79);
+                
+            }
+            hr{
+                border: .01em solid rgb(205, 92, 92);
+                border-radius: .5em;
+                
+                width: 90%;
+                
+            }
+            h2{color: black;}
+
+            i{
+                margin-left: .5em;
+                margin-right: 1em;
+                color: black;
+
+            }
+            label{
+                color: black;
+                font-size: 1.2em;    
+            }
+            #check{
+                -ms-transform: scale(1.5);
+                -moz-transform: scale(1.5);
+                -webkit-transform: scale(1.5);
+                transform: scale(1.5);
+                margin-left: .8em;
+                
+                
+            }
+
+            
+
+            #checktext{
+                display: inline;
+                font-size: 1.2em;
+                color: black;
+                margin-left: .6em;
+            }
+
+            .btn{
+                margin-top: 1em;
+                border: .1em solid rgba(255, 255, 255, 0.5);
+                background-color: rgb(205,92,92) ;
+                width: 10em;
+                color: black;
+                font-size: 1.5em;
+                font-weight: bold;
+                box-shadow: 0 0 10px rgb(47,79,79);
+            }
+            .btn:hover{   
+                border: .1em solid rgba(255, 255, 255, 0.5);
+                background-color: rgb(30,144,255);
+                color:black;
+                }
+
+            #messages{
+                background-color: rgba(255, 255, 255, 0.5);
+                color:black;
+                font-size: 1.2em;
+                padding: 2px;
+                text-align: center;
+            }
+            a{font-size: 1em;}
+
+        </style> 
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row justify-content-center"> 
+                <div class="col col-lg-4 col-md-8 col-sm-8 p-3">
+                    <div class="card-shadow ">
+                        <div class="card-title text-center">
+                            <h2 class="p-3">Login</h2>
+                            <hr>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="">
+                                {% csrf_token %}
+
+                                <div class="form-group">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <label>Username</label>
+                                    
+                                    <input type="text" class="form-control" placeholder="Enter Username" id="username" name="username">
+                                </div>
+                                <div class="form-group">
+                                    <i class="fas fa-unlock"></i>
+                                    <label for="">Password</label>
+                                    <input type="password" class="form-control" placeholder="Enter Password" id="password" name="password">
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="check" id="check">
+                                    <label for="check" id="checktext">Remember Me</label>
+                                    
+                                </div>
+                            
+                                <div class="d-flex justify-content-center mt-4">
+                                    <button type="submit" class="btn btn-primary" value="Login">Login</button>
+                                </div>
+                            </form>
+                                <br>
+                                {% for message in messages %}
+                                    <p id="messages">{{message}}</p>
+                                {% endfor %}
+                            
+                                <a href="{% url 'reset_password' %}">Forgot Password?</a>
+                                <br>
+                                <a href="{% url 'register' %}">Don't Have An Account? Register..</a>
+                                                           
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
